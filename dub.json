@@ -1,0 +1,10 @@
+{
+	"authors": [
+		"leleneme"
+	],
+	"copyright": "Copyright © 2025, leleneme",
+	"description": "A simple Minecraft RCON client in D.",
+	"libs": ["readline"],
+	"license": "GPL-3.0-or-later",
+	"name": "mcrcon-d"
+}

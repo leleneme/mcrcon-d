@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/mcrcon-d
+mcrcon-d.so
+mcrcon-d.dylib
+mcrcon-d.dll
+mcrcon-d.a
+mcrcon-d.lib
+mcrcon-d-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
