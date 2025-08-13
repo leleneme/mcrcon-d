@@ -1,7 +1,6 @@
 ### mcrcon-d
 
-A simple MCRCON client written in D.
-
+A simple Minecraft RCON client written in D.
 
 #### Building
 
@@ -18,3 +17,28 @@ Using dmd:
 ```
 $ dmd source/app.d source/mcrcon.d source/rl.d -L-lreadline
 ```
+
+#### Usage
+
+`mcrcon-d [OPTIONS]`
+
+Options:
+```
+-H     --host           Server address, default: localhost
+-P     --port           Port, default: 25575
+-p --password Required: RCON Password
+-h     --help           This help information.
+```
+
+#### License
+
+This project is licensed under the GNU GPL version 3 or any later version. See [LICENSE](./LICENSE) for details.
+
+#### TODO:
+
+Non-exhaustive list of possible improvements:
+
+- [ ] Allow passing option as environment variables.
+- [ ] Making a "run" mode where commands are passed to the CLI arguments, executed in sequence and then the program exists.
+- [ ] Improve error handling.
+- [ ] Build mcrcon as a library.
