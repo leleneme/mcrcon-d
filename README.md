@@ -20,7 +20,7 @@ $ dmd source/app.d source/mcrcon.d source/rl.d -L-lreadline
 
 #### Usage
 
-`mcrcon-d [OPTIONS]`
+`mcrcon-d [-H host] [-P port] -p password [-h] [COMMANDS]`
 
 Options:
 ```
@@ -29,6 +29,8 @@ Options:
 -p --password Required: RCON Password
 -h     --help           This help information.
 ```
+
+If no commands are provided, the program runs under an interactive RCON command shell. Otherwise the program runs all commands in sequence, and exits.
 
 #### License
 

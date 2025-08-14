@@ -6,7 +6,7 @@ import std.string : strip;
 import mcrcon : MCRconClient, ConnectionClosedException;
 import rl : readLine;
 
-const string DESCRIPTION = "mcrcon-d: A simple MCRcon client.";
+const string DESCRIPTION = "Usage: mcrcon-d [-H host] [-P port] -p password [-h] [COMMANDS]";
 
 struct Configuration
 {
