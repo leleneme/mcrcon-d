@@ -39,6 +39,5 @@ This project is licensed under the GNU GPL version 3 or any later version. See [
 Non-exhaustive list of possible improvements:
 
 - [ ] Allow passing option as environment variables.
-- [ ] Making a "run" mode where commands are passed to the CLI arguments, executed in sequence and then the program exists.
 - [ ] Improve error handling.
 - [ ] Build mcrcon as a library.

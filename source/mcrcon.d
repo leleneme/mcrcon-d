@@ -41,6 +41,11 @@ public:
         connected = true;
     }
 
+    bool alive()
+    {
+        return socket.isAlive() && connected;
+    }
+
     MCRconClient opCall()
     {
         return this;

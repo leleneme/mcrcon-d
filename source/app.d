@@ -1,6 +1,7 @@
 import std.stdio;
 import std.getopt;
 import std.socket : SocketOSException;
+import std.string : strip;
 
 import mcrcon : MCRconClient, ConnectionClosedException;
 import rl : readLine;
@@ -40,6 +41,40 @@ ParseOptionsResult parseArgs(ref string[] args)
 	return ParseOptionsResult(config, false);
 }
 
+void iteractiveMode(ref MCRconClient rcon)
+{
+	writeln("Authenticated. Type :exit or press Ctrl-C | Ctrl-D to exit.");
+
+	while (rcon.alive)
+	{
+		auto input = readLine("> ");
+
+		if (input is null || input == ":exit")
+			break;
+		else if (input.length <= 0)
+			continue;
+
+		input = input.strip();
+
+		string response = rcon.sendCommand(input);
+		if (response.length > 1)
+			writeln(response);
+
+		if (input == "stop")
+			break;
+	}
+}
+
+void cliCommandMode(ref MCRconClient rcon, ref string[] args)
+{
+	foreach (arg; args)
+	{
+		string response = rcon.sendCommand(arg);
+		if (response.length > 1)
+			writeln(response);
+	}
+}
+
 int main(string[] argv)
 {
 	Configuration config;
@@ -58,6 +93,8 @@ int main(string[] argv)
 		return 1;
 	}
 
+	auto argsRest = argv[1 .. $];
+
 	try
 	{
 		auto rcon = new MCRconClient(config.host, config.port);
@@ -67,21 +104,10 @@ int main(string[] argv)
 			return 1;
 		}
 
-		writeln("Authenticated. Type :exit or press Ctrl-C | Ctrl-D to exit.");
-
-		while (true)
-		{
-			auto input = readLine("> ");
-
-			if (input is null || input == ":exit")
-				break;
-			else if (input.length <= 0)
-				continue;
-
-			string response = rcon.sendCommand(input);
-			if (response.length > 1)
-				writeln(response);
-		}
+		if (argsRest.length == 0)
+			iteractiveMode(rcon);
+		else
+			cliCommandMode(rcon, argsRest);
 	}
 	catch (ConnectionClosedException ex)
 	{
