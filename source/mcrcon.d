@@ -1,11 +1,9 @@
 module mcrcon;
 
-import std.socket;
-import std.bitmanip : littleEndianToNative, nativeToLittleEndian;
-import std.exception : enforce;
 import std.datetime : dur;
-import std.typecons : Nullable;
-import std.sumtype : SumType;
+import std.exception : enforce;
+import std.bitmanip : littleEndianToNative, nativeToLittleEndian;
+import std.socket : TcpSocket, InternetAddress, SocketOptionLevel, SocketOption;
 
 struct Packet
 {

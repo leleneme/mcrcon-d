@@ -1,7 +1,6 @@
-import std.stdio;
-import std.getopt;
-import std.socket : SocketOSException;
 import std.string : strip;
+import std.stdio : stderr, writeln;
+import std.socket : SocketOSException;
 
 import mcrcon : MCRconClient, ConnectionClosedException;
 import rl : readLine;
@@ -23,6 +22,8 @@ struct ParseOptionsResult
 
 ParseOptionsResult parseArgs(ref string[] args)
 {
+	import std.getopt;
+
 	Configuration config;
 
 	auto opts = getopt(args,
