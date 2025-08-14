@@ -67,18 +67,16 @@ int main(string[] argv)
 			return 1;
 		}
 
-		writeln("Authenticated. Type :exit or press Ctrl-C to exit.");
+		writeln("Authenticated. Type :exit or press Ctrl-C | Ctrl-D to exit.");
 
 		while (true)
 		{
 			auto input = readLine("> ");
-			if (input.length <= 0)
-				continue;
 
-			if (input == ":exit")
-			{
+			if (input is null || input == ":exit")
 				break;
-			}
+			else if (input.length <= 0)
+				continue;
 
 			string response = rcon.sendCommand(input);
 			if (response.length > 1)
@@ -87,7 +85,7 @@ int main(string[] argv)
 	}
 	catch (ConnectionClosedException ex)
 	{
-		stderr.writeln("Connection closed.");
+		stderr.writeln("Connection to host was closed.");
 		return 1;
 	}
 	catch (SocketOSException ex)
