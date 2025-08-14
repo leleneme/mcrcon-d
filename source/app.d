@@ -41,7 +41,7 @@ ParseOptionsResult parseArgs(ref string[] args)
 	return ParseOptionsResult(config, false);
 }
 
-void iteractiveMode(ref MCRconClient rcon)
+void iterativeMode(ref MCRconClient rcon)
 {
 	writeln("Authenticated. Type :exit or press Ctrl-C | Ctrl-D to exit.");
 
@@ -105,7 +105,7 @@ int main(string[] argv)
 		}
 
 		if (argsRest.length == 0)
-			iteractiveMode(rcon);
+			iterativeMode(rcon);
 		else
 			cliCommandMode(rcon, argsRest);
 	}
